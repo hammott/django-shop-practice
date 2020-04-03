@@ -14,8 +14,24 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from django.conf.urls import include, url
+from rest_framework_swagger.views import get_swagger_view
+from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
+
+
+# schema_view = get_swagger_view(
+#     title='RESTFUL API',
+#     renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
+
+schema_view = get_swagger_view(title='RESTFUL API')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('user.user_urls')),
+    path('api/',schema_view)
+
 ]
+
+
+

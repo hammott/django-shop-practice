@@ -8,12 +8,32 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 
+
 from . import serializers
 from .utils import get_and_authenticate_user, create_user_account
+
+# For Swagger 
+from rest_framework.schemas import AutoSchema
+import coreapi
+
+# For Swagger API
+# class UserViewSchema(AutoSchema):
+#     def get_manual_fields(self,path,method):
+#         extra_fields = []
+#         if method.lower() in ['post','put']:
+#             extra_fields = [
+#                 coreapi.Field('email')
+#             ]
+#         manual_fields = super().get_manual_fields(path,method)
+#         return manual_fields + extra_fields
+    
+
+
 
 
 # LOGIN REGISTER LOUGOUT CHANGE PASSWORD-------------------------------------------------------------------
 class AuthViewSet(viewsets.GenericViewSet):
+    # schema = UserViewSchema()
     queryset = User.objects.all()
     permission_classes = [AllowAny, ]
     serializer_class = serializers.EmptySerializer
@@ -64,3 +84,7 @@ class AuthViewSet(viewsets.GenericViewSet):
         if self.action in self.serializer_classes.keys():
             return self.serializer_classes[self.action]
         return super().get_serializer_class()
+
+
+
+
