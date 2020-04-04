@@ -19,6 +19,9 @@ from django.conf.urls import include, url
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 
+from . import views
+
+
 
 # schema_view = get_swagger_view(
 #     title='RESTFUL API',
@@ -28,6 +31,8 @@ schema_view = get_swagger_view(title='RESTFUL API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/user', views.login, name='login'),
+
     path('user/', include('user.user_urls')),
     path('api/',schema_view)
 

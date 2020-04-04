@@ -16,6 +16,7 @@ from .utils import get_and_authenticate_user, create_user_account
 from rest_framework.schemas import AutoSchema
 import coreapi
 
+
 # For Swagger API
 # class UserViewSchema(AutoSchema):
 #     def get_manual_fields(self,path,method):
