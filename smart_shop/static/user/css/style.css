@@ -1,0 +1,64 @@
+:root{
+    --nav-color:black;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-background{
+    background: var(--nav-color);
+    width: 100%;
+    height: 120px;
+    color: #fff;
+}
+.header-background a{
+    text-decoration: none;
+    color: #fff;
+    cur
+    
+}
+
+.navbar-sprite{
+    margin: 0 !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 18;
+    display: block;
+    /* min-width: 1000px; */
+}
+
+.nav-belt{
+    position: relative;
+    width: 100%;
+    font-size: 18px;
+}
+
+.nav-left{
+    position: relative;
+    float: left;
+    width: auto;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.nav-logo-img{
+    float: left;
+    height: 30px;
+    display: block;
+    width: 120px;
+    background: url(logo.svg) no-repeat 50%;
+    background-size: contain;
+}
+
+.nav-right{
+    height: 60px;
+    
+}
