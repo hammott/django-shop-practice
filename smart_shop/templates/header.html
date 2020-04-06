@@ -5,26 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online shop practice Shop</title>
-    <link rel="stylesheet" href="{% static 'user/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'static/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
 </head>
 <body>
     <header class="header-background">
         <div class="navbar-sprite">
             <div class="nav-belt">
-                <div class="nav-left">
+                <div class="nav-left nav-padding">
                     <div class="nav-logo">
                         <a href="">
                             <div class="nav-logo-img"> </div>
                         </a>
                     </div>
                 </div> <!-- end nav-left-->
-                <div class="nav-right">
+                <div class="nav-right nav-padding">
                     <div class="nav-tools">
                         <a href="" class="nav-language nav-line-height">
                             <div class="nav-line1">
@@ -61,7 +56,7 @@
                             </div>
                             <div class="nav-right">
                                 <div class="nav-search-button">
-                                    
+                                    <i class="fas fa-search"></i>
                                     <input type="submit" class="button-search-input">
                                 </div>
                             </div>
@@ -74,14 +69,32 @@
                     </div>
                 </div><!-- end nav-hill-->
             </div>
+        </div><!-- end navbar-sprite-->
+        <div class="navbar-sprite nav-main">
+            <div class="nav-left">
+                <div class="nav-global-location">
+                    <a href="" class="">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="nav-location-text">
+                            <div class="nav-location-line1">Hello</div>
+                            <div class="nav-location-line2">Select your address</div>
+                        </div>
+                    </a>
+                </div>
+            </div><!-- end nav-left-->
+            <div class="nav-container">
+                <a href="" class="nav-a">Best Seller</a>
+                <a href="" class="nav-a">Customer Service</a>
+                <a href="" class="nav-a">New Releases</a>
+                <a href="" class="nav-a">Whole Foods</a>
+                <a href="" class="nav-a">Find A Gift</a>
+                <a href="" class="nav-a">Registery</a>
+                <a href="" class="nav-a">Gift Cards</a>
+                <a href="" class="nav-a">Sell</a>
+                <a href="" class="nav-a">AmazonBasics</a>
+                <a href="" class="nav-a">#FounditOnAmazon</a>
+                <a href="" class="nav-a">Free Shipping</a>
+            </div><!-- nav-container-->
         </div>
     </header>
-    <nav>
-        <ul>
-            <li>Today's Deal</li>
-            <li>Customer Service</li>
-            <li>Registry</li>
-            <li>Gift Cards</li>
-            <li>Sell</li>
-        </ul>
-    </nav>
+
