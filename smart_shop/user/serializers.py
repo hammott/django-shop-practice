@@ -26,8 +26,8 @@ class AuthUserSerializer(serializers.ModelSerializer):
         read_only_fields = ('id', 'is_active', 'is_staff')
 
     def get_auth_token(self,obj):
-        token = Token.objects.create(user=obj)
-        return token.key
+        token, _  = Token.objects.get_or_create(user=obj)
+        return ({'token': token.key})
 
 class EmptySerializer(serializers.Serializer):
     pass

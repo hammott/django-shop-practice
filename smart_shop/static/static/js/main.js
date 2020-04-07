@@ -13,10 +13,22 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "http://127.0.0.1:8000/user/api/auth/login",
-            data: "jsonConvertedData",
-            dataType: "application/json",
-            success: function (response) {
-                console.log('process is compelete')
+            data: {
+                email : $email,
+                password : $password,
+            },
+            dataType: "json",
+            success: function(response) {
+                
+                $.cookie('token',response.auth_token.token)
+                $.cookie('email',response.email)
+                $.cookie('name',response.name)
+
+                $('#singin_name').html('Hello '+ $.cookie('name'))
+                console.log(response.auth_token.token);
+                console.log(response.name);
+                console.log(response.email);
+
                 
             }
         });
