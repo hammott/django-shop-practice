@@ -1,7 +1,12 @@
 :root{
     --nav-color:black;
     --font-gray:gray;
+    --orange: #febd69;
 }
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  }
 
 *{
     box-sizing: border-box;
@@ -299,20 +304,110 @@ body{
 
 .nav-container{
     position: static;
-    float: none;
+    float: left;
     width: auto;
-    margin: 0;
-    font-size: 12px;
+    margin-left: 15px;
+    font-size: 13px;
     padding: 12px;
     color: #ccc;
     display: grid;
-    grid-template-columns: repeat(11,1fr);
-    grid-gap:10px ;
-    grid-auto-columns: minmax(100px, auto);
+    grid-template-columns: repeat(11,auto);
+    grid-gap:16px ;
+    /* grid-auto-columns: minmax(100px, auto); */
 }
 .nav-a{
-
+    margin-top: 5px;
     text-decoration: none;
     float: left;
+}
+
+.box{
+    width: 400px;
+    padding: 50px;
+    position: relative;
+    margin-top: 80px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: var(--orange);
+    text-align:center;
+    border-radius:35px;
+    
+}
+.login-text-container{
+    transform: translate(-12.7%, -63%);
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    border-radius: 35px 35px 0 0;
+    background-color: black;
+
+}
+.box h1 {
+    font-weight: 300;
+    font-size: 23px;
+    color: white;
+    padding-bottom: 20px;
+    margin-top: 30px;
+}
+
+
+.box input[type="text"], .box input[type="password"]{
+
+    background: none;
+    font-size: 15px;
+    font-weight: 300;
+    display:block;
+    margin: 40px auto;
+    text-align: left;
+    border:none;
+    border-bottom: 3px solid black;
+    padding: 14px 10px;
+    width: 200px;
+    color: black;
+    
+    transition: 0.25s;
+}
+.box input[type="text"]:focus, .box input[type="password"]:focus{
+    width: 280px;
+    border-color: white;
+}
+
+.box input[type="submit"]{
+    background:none;
+    display: flex;
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    border:none;
+    padding: 14px 40px;
+    outline: none;
+    color:white;
+    text-transform: uppercase;
+    border-radius:30px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: black;
+}
+.box input[type="submit"]:hover{
+    width: 80%;
+}
+.forgot-password{
+    text-align: right;
+    
+}
+.forgot-password a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.signup-text-container{
+    text-align: center;
+}
+.signup-text-container a{
+    color: black;
+    text-decoration: none;
 }
 

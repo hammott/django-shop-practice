@@ -2,7 +2,27 @@
 
 
 
-   <h1>login.html</h1> 
+   <section>
+      <form action="" method="POST" class="box"> {% csrf_token %}
+
+         <div class="login-text-container">
+            <h1>LOGIN</h1>
+         </div>
+         <input id="login-email" type="text" placeholder="example@example.com">
+         <input id="login-password" type="password" placeholder="Type your password">
+         <div class="forgot-password">
+            <a href="">
+               Forgot password?
+            </a>
+         </div>
+         <input id="submit" type="submit" value="login">
+         <div class="signup-text-container">
+            <a href="">
+                Or Sign Up  Using
+            </a>
+         </div>
+      </form>
+   </section>
 
 
 
