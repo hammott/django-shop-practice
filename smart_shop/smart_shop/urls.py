@@ -32,6 +32,7 @@ schema_view = get_swagger_view(title='RESTFUL API')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/user', views.login, name='login'),
+    path('', views.index, name='index'),
 
     path('user/', include('user.user_urls')),
     path('api/',schema_view)
