@@ -79,7 +79,6 @@ class AuthViewSet(viewsets.GenericViewSet):
 
     @action(methods=['POST', ], detail=False)
     def logout(self, request):
-        logout(request)
         data = {'success': 'Sucessfully logged out'}
         return Response(data=data, status=status.HTTP_200_OK)
 

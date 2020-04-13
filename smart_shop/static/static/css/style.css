@@ -97,18 +97,78 @@ body{
     font-size: 13px;
     height: 17px;
 }
-
-
-.nav-signin{
+.nav-line2 i{
+    margin-left: 2px;
+}
+.nav-login-navbar{
+    position: relative;
+    float: left;   
+    cursor: pointer;
+    top: 10px;
+    margin-right: 15px; 
     padding-left:10px ;
     height: 50px;
-    top: 10px;
-    margin-right: 15px;
-    position: relative;
-    float: left;
-  
+}
+.login_drop{
+    position: absolute;
+    display: none;
+    transform: translate(0,2%);
+    z-index: 1000;
+}
+
+.header_dropdown_login{
+    display: grid;
+    /* height: 100%; */
+    grid-template-rows: repeat(4,1fr);
+    background-color: white;
+    
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    line-height: 26px;
+    
     
 }
+.header_dropdown_login a:hover{
+    background-color: var(--orange);
+}
+.header_dropdown_login p{
+    color:black;
+    padding:5px 10px;
+}
+
+.header_dropdown_login2{
+    display: grid;
+    background-color: white;    
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    line-height: 26px;
+    padding:21px 12px;
+}
+.login-button{
+    display: none;
+}
+.header_dropdown_login2 .login-button-orange{
+    padding:0 20px;
+
+
+}
+.header_dropdown_login2 button{
+    background-color: var(--orange);
+    padding: 8px 24px;
+    outline-color: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: 0.25s;
+}
+.header_dropdown_login2 button:hover{
+    background-color: black;
+    color: white;
+}
+.header_dropdown_login_name{
+    font-size:10px ;
+    padding: 0;
+    margin-left: -10;
+}
+
 
 .nav-order{
     padding-left:10px ;
