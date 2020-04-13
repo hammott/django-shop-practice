@@ -113,7 +113,7 @@ body{
     position: absolute;
     display: none;
     transform: translate(0,2%);
-    z-index: 1000;
+    z-index: 3;
 }
 
 .header_dropdown_login{
@@ -144,6 +144,8 @@ body{
 }
 .login-button{
     display: none;
+    z-index: 4;
+    position: absolute;
 }
 .header_dropdown_login2 .login-button-orange{
     padding:0 20px;
