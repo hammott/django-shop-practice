@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
 
     'user',
+    'products',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
