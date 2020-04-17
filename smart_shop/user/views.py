@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from .models import User
 from django.core.exceptions import ImproperlyConfigured
 from rest_framework import viewsets, status
