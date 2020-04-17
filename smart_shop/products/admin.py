@@ -13,9 +13,15 @@ class VariationInLine(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
 	list_display = ['title', 'price']
 	inlines =[VariationInLine]
+	
 	class Meta:
 		model = Product
 
+class CategoryAdmin(admin.ModelAdmin):
+	prepopulated_fields = {'slug': ('title',), }
+	class Meta:
+		model= Category
+
 admin.site.register(Product,ProductAdmin)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory)
