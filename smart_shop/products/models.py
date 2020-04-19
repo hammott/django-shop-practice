@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
 
+
 class ProductQuerySet(models.query.QuerySet):
     def active(self):
         return self.filter(active=True)
@@ -27,6 +28,8 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     categories = models.ManyToManyField('SubCategory', blank=True)
 
+    objects = ProductManager()
+
     class Meta:
         ordering = ["-title"]
 
@@ -34,10 +37,14 @@ class Product(models.Model):
     def __str_(self):
         return self.title
 
+    def get_absolute_url(self):
+        return "product_detail/%i/" % self.id
+
+
 
 class Category(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    slug = models.SlugField(unique=True, editable=False,)
+    slug = models.SlugField(unique=True)
     description = models.TextField(null=True, blank=True)
     active = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
@@ -49,23 +56,6 @@ class Category(models.Model):
         value = self.title
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
-
-
-# class MyModel(models.Model):
-#     name = models.CharField()
-#     slug = models.SlugField(unique=True, null=False)
-#     def _generate_unique_slug(self)
-#         unique_slug = slugify(self.name)
-#         num = 1
-#         while MyModel.objects.filter(slug=unique_slug).exists():
-#             slug = '{}-{}'.format(unique_slug, num)
-#             num += 1
-#             return unique_slug
-#     def save(self, *args, **kwargs):
-#         if not self.slug:
-#             self.slug = self._get_unique_slug()
-#         super().save(*args, **kwargs)
-
         
 class SubCategory(models.Model):
     category = models.ForeignKey('Category', 
@@ -76,9 +66,13 @@ class SubCategory(models.Model):
     active = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
-    def __srt__(self):
+    def __str__(self):
             return self.title
 
+    def save(self, *args, **kwargs):
+        value = self.title
+        self.slug = slugify(value, allow_unicode=True)
+        super().save(*args, **kwargs)
 
 
 
@@ -98,3 +92,22 @@ class Variation(models.Model):
             return self.sale_price
         else:
             return self.price
+
+def image_upload_to(instance, filename):
+	title = instance.product.title
+	slug = slugify(title)
+	basename, file_extension = filename.split(".")
+	new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
+	return "products/images/%s/%s" %(slug, new_filename)
+
+
+
+
+class ProductImage(models.Model):
+	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	image = models.ImageField(upload_to=image_upload_to)
+
+	def __str__(self):
+		return self.product.title
+
+
