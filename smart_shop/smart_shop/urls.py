@@ -20,7 +20,10 @@ from rest_framework_swagger.views import get_swagger_view
 from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 
 from . import views
+from products.views import (
+    CategoryListAPIView,
 
+)
 
 
 # schema_view = get_swagger_view(
@@ -31,12 +34,19 @@ schema_view = get_swagger_view(title='RESTFUL API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/user', views.login, name='login'),
     path('', views.index, name='index'),
-
     path('user/', include('user.user_urls')),
-    path('api/',schema_view)
+    path('product/', include('products.urls')),
 
+    path('api-swagger/',schema_view)
+
+]
+
+
+
+urlpatterns +=[
+    path('login/user', views.login, name='login'),
+    path('api/categories/',CategoryListAPIView.as_view(), name='categories_api')
 ]
 
 
