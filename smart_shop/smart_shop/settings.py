@@ -100,14 +100,19 @@ WSGI_APPLICATION = 'smart_shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_shop_db',
+        'NAME': 'django_shop_db_new',
         'USER' : 'hammott',
         'PASSWORD' : '1234',
         'HOST': 'localhost',
         'PORT' : 5432,
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

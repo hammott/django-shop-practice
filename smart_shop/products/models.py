@@ -26,7 +26,7 @@ class Product(models.Model):
     short_description = models.TextField(blank=True, null=True)
     price = models.DecimalField(decimal_places=2, max_digits=10)
     active = models.BooleanField(default=True)
-    categories = models.ManyToManyField('SubCategory', blank=True)
+    categories = models.OneToOneField('SubCategorySecond', blank=True, on_delete=models.CASCADE, null=True)
 
     objects = ProductManager()
 
@@ -62,10 +62,14 @@ class Category(models.Model):
         value = self.title
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("category_detail", kwargs={"slug": self.slug})
+    
         
-class SubCategory(models.Model):
+class SubCategoryFirst(models.Model):
     category = models.ForeignKey('Category', 
-                        related_name='subCategoryList', 
+                        related_name='subCategoryFirstList', 
                         on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(unique=True)
@@ -80,7 +84,22 @@ class SubCategory(models.Model):
         self.slug = slugify(value, allow_unicode=True)
         super().save(*args, **kwargs)
 
+class SubCategorySecond(models.Model):
+    category = models.ForeignKey('SubCategoryFirst', 
+                        related_name='subCategorySecondList', 
+                        on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(unique=True)
+    active = models.BooleanField(default=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
+    def __str__(self):
+            return self.title
+
+    def save(self, *args, **kwargs):
+        value = self.title
+        self.slug = slugify(value, allow_unicode=True)
+        super().save(*args, **kwargs)
 
 class Variation(models.Model):
     product=models.ForeignKey(Product, on_delete=models.CASCADE)

@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Product, Category, SubCategory, Variation, ProductImage
+from .models import (Product, 
+					Category, 
+					SubCategoryFirst,
+					SubCategorySecond,
+					Variation, 
+					ProductImage,)
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
@@ -30,15 +35,23 @@ class CategoryAdmin(admin.ModelAdmin):
 	class Meta:
 		model= Category
 
-class SubCategoryAdmin(admin.ModelAdmin):
+class SubCategoryFirstAdmin(admin.ModelAdmin):
 	prepopulated_fields={'slug':('title',),}
+	list_display=['title','category','active']
 	class Meta:
-		model= SubCategory
+		model= SubCategoryFirst
+
+class SubCategorySecondAdmin(admin.ModelAdmin):
+	prepopulated_fields={'slug':('title',),}
+	list_display=['title','category','active']
+	class Meta:
+		model= SubCategorySecond
 
 
 
 
 admin.site.register(Product,ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(SubCategory, SubCategoryAdmin)
+admin.site.register(SubCategoryFirst, SubCategoryFirstAdmin)
+admin.site.register(SubCategorySecond, SubCategorySecondAdmin)
 admin.site.register(ProductImage)

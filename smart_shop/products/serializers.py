@@ -4,7 +4,8 @@ from .models import (
                     Category, 
                     Product, 
                     Variation, 
-                    SubCategory
+                    SubCategoryFirst,
+                    SubCategorySecond
                     )
 
 
@@ -94,18 +95,21 @@ class ProductSerializer(serializers.ModelSerializer):
 # Category -----------------------------------------------
 
 class CategorySerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-                            view_name='category_detail_api')
-    set_product = ProductSerializer(many=True)
+#     url = serializers.HyperlinkedIdentityField(
+#                             view_name='category_detail_api',
+#                             many=True,
+#                             read_only=True,
+#                             )
+#     set_product = ProductSerializer(many=True)
     class Meta:
         model = Category
         fields =[
-            "url",
+            # "url",
             "id",
             "title",
             "description",
             "timestamp",
-            "set_product",
+            # "set_product",
         ]
 
 
@@ -116,7 +120,7 @@ class SubCategorySerializer(serializers.ModelSerializer):
                             view_name='subcategory_detail_api')
     set_product = ProductSerializer(many=True)
     class Meta:
-        model = SubCategory
+        model = SubCategoryFirst
         fields =[
             "url",
             "id",

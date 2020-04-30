@@ -22,6 +22,8 @@ from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 from . import views
 from products.views import (
     CategoryListAPIView,
+    CategoryRetrieveAPIView,
+
 
 )
 
@@ -43,10 +45,11 @@ urlpatterns = [
 ]
 
 
-
+# API All
 urlpatterns +=[
     path('login/user', views.login, name='login'),
-    path('api/categories/',CategoryListAPIView.as_view(), name='categories_api')
+    path('api/categories/',CategoryListAPIView.as_view(), name='categories_api'),
+    path('api/categories/(?P<pk>\d+)/',CategoryRetrieveAPIView.as_view(), name='category_detail_api'),
 ]
 
 
